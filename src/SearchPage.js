@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchPage = (props) => {
   console.log("search", props.location.data);
-  console.log("search", props.location.fetchData);
-  const collection = props.location.fetchData;
-  console.log(collection);
+  // console.log("search", props.location.collection);
+  // const collection = props.location.fetchDatas;
+  // console.log("search", collection);
 
   let history = useHistory();
 
@@ -29,7 +29,7 @@ const SearchPage = (props) => {
       </button>
       <h1 style={{ textAlign: "center" }}>NASA Media Search</h1>
       <h4 style={{ marginLeft: "1rem" }}>
-        Search Results for {props.location.data}{" "}
+        Search Results for {props.location.data}
       </h4>
       <div className="search__cardContainer">
         <div className="search__card">
