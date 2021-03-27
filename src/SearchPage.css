@@ -1,0 +1,28 @@
+.search__container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.search__cardContainer {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.search__card {
+  max-width: 500px;
+  display: flex;
+  border: 1px solid black;
+}
+
+.search__image {
+  margin: 1.5rem;
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
