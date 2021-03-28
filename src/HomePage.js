@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 
 const HomePage = ({ title, url, explanation, date, copyright }) => {
-  const [query, setQuery] = useState();
-  const [searchData, setSearchData] = useState();
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState("");
 
   // useEffect(() => {
   //   getSearchData();
@@ -14,18 +14,26 @@ const HomePage = ({ title, url, explanation, date, copyright }) => {
     const results = await fetch(
       `https://images-api.nasa.gov/search?q=${query}`
     );
-    console.log(results);
+    // console.log(results);
     const datas = await results.json();
-    console.log(datas.collection);
-    setSearchData(datas.collection);
-    console.log(setSearchData);
+    console.log("main", datas.collection);
+
+    setData(
+      localStorage.setItem(
+        "myData",
+        JSON.stringify(datas.collection.items.links.data)
+      )
+    );
+    console.log(setData);
+    // setData(datas);
+    setQuery("");
+    console.log("home", setData);
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    getSearchData();
-    setQuery("");
-  };
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   getSearchData();
+  // };
 
   return (
     <div className="home__container">
@@ -44,11 +52,12 @@ const HomePage = ({ title, url, explanation, date, copyright }) => {
             <Link
               to={{
                 pathname: "/searchpage",
-                data: query,
-                fetchData: searchData,
+                data: data,
+                query: query,
               }}
+              // onClick={() => getSearchData()}
             >
-              <button type="submit" onClick={handleClick}>
+              <button type="submit" onClick={() => getSearchData()}>
                 Search
               </button>
             </Link>
