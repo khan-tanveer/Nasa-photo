@@ -19,9 +19,9 @@ const HomePage = ({ title, url, explanation, date, copyright }) => {
     console.log("main", datas.collection);
 
     setData(
-      localStorage.setItem(
+      window.localStorage.setItem(
         "myData",
-        JSON.stringify(datas.collection.items.links.data)
+        JSON.stringify(datas.collection.items)
       )
     );
     console.log(setData);
