@@ -52,15 +52,15 @@ const SearchPage = (props) => {
     setData(newData);
   }, []);
 
-  console.log(data);
-
   return (
     <div className="search__container">
       <button onClick={() => history.push("/")} style={{ margin: "1rem" }}>
         Home
       </button>
       <h1 style={{ textAlign: "center" }}>NASA Media Search</h1>
-      <h4 style={{ marginLeft: "1rem" }}>Search Results for</h4>
+      <h4 style={{ marginLeft: "1rem" }}>
+        Search Results for {props.location.query}
+      </h4>
 
       {displayUsers}
 

@@ -6,15 +6,10 @@ const HomePage = ({ title, url, explanation, date, copyright }) => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
 
-  // useEffect(() => {
-  //   getSearchData();
-  // }, []);
-
   const getSearchData = async () => {
     const results = await fetch(
       `https://images-api.nasa.gov/search?q=${query}`
     );
-    // console.log(results);
     const datas = await results.json();
     console.log("main", datas.collection);
 
@@ -25,15 +20,9 @@ const HomePage = ({ title, url, explanation, date, copyright }) => {
       )
     );
     console.log(setData);
-    // setData(datas);
     setQuery("");
     console.log("home", setData);
   };
-
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   getSearchData();
-  // };
 
   return (
     <div className="home__container">
@@ -52,10 +41,8 @@ const HomePage = ({ title, url, explanation, date, copyright }) => {
             <Link
               to={{
                 pathname: "/searchpage",
-                data: data,
                 query: query,
               }}
-              // onClick={() => getSearchData()}
             >
               <button type="submit" onClick={() => getSearchData()}>
                 Search
